@@ -1,0 +1,21 @@
+.wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .user {
+        display: flex;
+        align-items: center;
+
+        .user-name {
+            margin-right: 12px;
+        }
+
+        .user-img {
+            .user-icon {
+                width: 25px;
+                height: 25px;
+            }
+        }
+    }
+}

@@ -1,0 +1,79 @@
+.wrapper {
+    margin-right: 10%;
+    position: relative;
+
+    .content {
+        padding: 10px;
+        background-color: var(--white-color);
+        border-radius: 50%;
+        border: 1px solid var(--border-color);
+        box-shadow: var(--box-shadow-color);
+        cursor: pointer;
+        transition: box-shadow ease 0.2s;
+
+        &:hover {
+            box-shadow: var(--hover-box-shadow-color);
+        }
+
+        .icon {
+            width: 25px;
+            height: 25px;
+        }
+    }
+
+    .address-user {
+        position: absolute;
+        top: var(--height-header);
+        left: -125.5px;
+        z-index: 1;
+        width: 300px;
+        min-height: 100px;
+        padding: 20px;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        background-color: var(--border-color);
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        box-shadow: var(--box-shadow-color);
+        transform-origin: center top;
+        animation: grow ease-in 0.2s;
+
+        & > p {
+            margin-bottom: 12px;
+        }
+
+        & > a {
+            color: var(--link-underline-color);
+            text-decoration: underline;
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: -15px;
+            left: calc(50% - 20px);
+            background-color: transparent;
+            content: '';
+            border-width: 20px 20px;
+            border-style: solid;
+            border-color: var(--border-color) var(--border-color) transparent transparent;
+            border-top-right-radius: 6px;
+            transform: rotate(-45deg);
+            z-index: 1;
+        }
+    }
+}
+
+@keyframes grow {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

@@ -1,0 +1,50 @@
+.wrapper {
+    .form {
+        display: flex;
+        align-items: center;
+        --height-search: 48px;
+        height: var(--height-search);
+        padding: 8px;
+        padding-right: 0;
+        border: 1px solid var(--border-color);
+        border-radius: 40px;
+        box-shadow: var(--box-shadow-color);
+        transition: box-shadow ease 0.2s;
+
+        &:hover {
+            box-shadow: var(--hover-box-shadow-color);
+        }
+
+        .btnSubmit {
+            width: calc(var(--height-search) - 16px);
+            height: calc(var(--height-search) - 16px);
+            border-radius: 50%;
+            margin-right: 10px;
+
+            .btnSubmit-icon {
+                position: relative;
+                bottom: -1px;
+                right: -1px;
+                font-size: 0.9rem;
+            }
+        }
+
+        .input {
+            min-width: 90%;
+            padding-right: 12px;
+            margin-right: 2px;
+            height: calc(var(--height-search) - 4px);
+            border-top-right-radius: 40px;
+            border-bottom-right-radius: 40px;
+            font-size: 1rem;
+            &::-webkit-search-cancel-button {
+                display: none;
+            }
+
+            &::placeholder {
+                position: relative;
+                bottom: -1px;
+            }
+        }
+    }
+}
