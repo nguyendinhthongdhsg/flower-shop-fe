@@ -1,5 +1,9 @@
 'use client';
 import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
+import classNames from 'classnames/bind';
+import styles from './Input.module.scss';
+
+const cx = classNames.bind(styles);
 
 interface InputProps {
     id: string;
@@ -13,10 +17,18 @@ interface InputProps {
 
 const Input: React.FC<InputProps> = ({ id, label, type, disabled, register, required, errors }) => {
     return (
-        <div className="w-full relative">
-            <input id={id} type={type} disabled={disabled} {...register(id, { required })} />
-
-            <label>{label}</label>
+        <div className={cx('wrapper')}>
+            <input
+                id={id}
+                type={type}
+                disabled={disabled}
+                {...register(id, { required })}
+                className={cx('input', errors[id] && 'error')}
+                placeholder={label}
+            />
+            <label htmlFor={id} className={cx('label', errors[id] && 'error')}>
+                {label}
+            </label>
         </div>
     );
 };

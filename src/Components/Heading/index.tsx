@@ -1,5 +1,10 @@
 'use client';
 
+import classNames from 'classnames/bind';
+import styles from './Heading.module.scss';
+
+const cx = classNames.bind(styles);
+
 interface HeadingProps {
     title: string;
     subtitle?: string;
@@ -8,9 +13,11 @@ interface HeadingProps {
 
 const Heading: React.FC<HeadingProps> = ({ title, subtitle, center }) => {
     return (
-        <div className={center ? 'text-center' : 'text-start'}>
-            <div className="text-2xl font-bold">{title}</div>
-            <div className="font-light text-neutral-500 mt-2">{subtitle}</div>
+        <div className={cx('wrapper')}>
+            <div className={cx('content')}>
+                <div className={cx('heading', center && 'center')}>{title}</div>
+                <div className={cx('heading-sub', center && 'center')}>{subtitle}</div>
+            </div>
         </div>
     );
 };

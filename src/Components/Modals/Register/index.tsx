@@ -9,6 +9,10 @@ import { useState } from 'react';
 import Modal from '../Modal';
 import Heading from '@/Components/Heading';
 import Input from '@/Components/Input';
+import Button from '@/Components/Button';
+import { FcGoogle } from 'react-icons/fc';
+import { AiFillGithub } from 'react-icons/ai';
+import { BsLinkedin } from 'react-icons/bs';
 
 const Register = () => {
     const registerModal = useRegisterModal();
@@ -44,7 +48,7 @@ const Register = () => {
 
     const bodyContent = (
         <div>
-            <Heading title="Chào mừng đến Airbnb" subtitle="Tạo tài khoản" />
+            <Heading title="Chào mừng đến Flower Shop" subtitle="Tạo tài khoản" />
             <Input
                 id="email"
                 label="Email"
@@ -73,7 +77,28 @@ const Register = () => {
         </div>
     );
 
-    const footerContent = <div></div>;
+    const footerContent = (
+        <div>
+            <Button
+                onClick={() => {}}
+                label="Tiếp tục với Google"
+                icon={<FcGoogle size={26} />}
+                outline={true}
+            />
+            <Button
+                onClick={() => {}}
+                label="Tiếp tục với Github"
+                icon={<AiFillGithub size={26} />}
+                outline={true}
+            />
+            <Button
+                onClick={() => {}}
+                label="Tiếp tục với LinkIn"
+                icon={<BsLinkedin size={26} />}
+                outline={true}
+            />
+        </div>
+    );
 
     return (
         <Modal

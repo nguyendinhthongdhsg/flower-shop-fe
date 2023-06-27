@@ -71,31 +71,41 @@ const Modal: React.FC<ModalProps> = ({
                 <div className={cx('modal')}>
                     {/* Header */}
                     <header className={cx('header')}>
-                        <button type="button" className={cx('button-close')} onClick={handleClose}>
+                        <button
+                            type="button"
+                            className={cx('button-close')}
+                            onClick={handleClose}
+                            title="Đóng"
+                        >
                             <FontAwesomeIcon icon={faXmark} className={cx('button-close-icon')} />
                         </button>
                         <h1 className={cx('heading')}>{title}</h1>
                     </header>
                     {/* Body */}
-                    <div className={cx('body')}>{body}</div>
-                    {/* Footer */}
-                    <div className="">
-                        <div className="">
-                            {secondaryAction && secondaryActionLabel && (
-                                <Button
-                                    outline
-                                    disabled={disabled}
-                                    label={secondaryActionLabel}
-                                    onClick={handleSecondaryAction}
-                                />
-                            )}
-                            <Button
-                                disabled={disabled}
-                                label={actionLabel}
-                                onClick={handleSubmit}
-                            />
+                    <div className={cx('body')}>
+                        <div className={cx('content-body')}>
+                            {body}
+                            {/* Footer */}
+
+                            <div className={cx('footer')}>
+                                <div className={cx('content')}>
+                                    {secondaryAction && secondaryActionLabel && (
+                                        <Button
+                                            outline
+                                            disabled={disabled}
+                                            label={secondaryActionLabel}
+                                            onClick={handleSecondaryAction}
+                                        />
+                                    )}
+                                    <Button
+                                        disabled={disabled}
+                                        label={actionLabel}
+                                        onClick={handleSubmit}
+                                    />
+                                </div>
+                                {footer}
+                            </div>
                         </div>
-                        {footer}
                     </div>
                 </div>
             </div>
