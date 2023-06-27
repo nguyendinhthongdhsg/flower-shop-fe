@@ -1,8 +1,8 @@
 import classNames from 'classnames/bind';
-import styles from './LoadingStyle.module.scss';
+import styles from './Loading.module.scss';
 const cx = classNames.bind(styles);
 
-export default function Loading() {
+const Loading = () => {
     return (
         <div className={cx('wrapper')}>
             <div className={cx('lds-ellipsis')}>
@@ -13,4 +13,6 @@ export default function Loading() {
             </div>
         </div>
     );
-}
+};
+
+export default Loading;

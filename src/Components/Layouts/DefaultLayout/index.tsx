@@ -1,16 +1,23 @@
-import classNames from 'classnames/bind';
-import Header from '@/Components/Header';
-import Footer from '@/Components/Footer';
+import classnames from 'classnames/bind';
+import Navbar from '@/Components/Navbar';
 import styles from './DefaultLayout.module.scss';
+import Register from '@/Components/Modals/Register';
+interface DefaultLayoutProps {
+    children: React.ReactNode;
+}
 
-const cx = classNames.bind(styles);
+const cx = classnames.bind(styles);
 
-export default function DefaultLayout({ children }: { children: React.ReactNode }) {
+const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
     return (
         <div className={cx('wrapper')}>
-            <Header />
-            <div className={cx('child')}>{children}</div>
-            <Footer />
+            <Register />
+            <header className={cx('header')}>
+                <Navbar />
+            </header>
+            <div className={cx('content')}>{children}</div>
         </div>
     );
-}
+};
+
+export default DefaultLayout;

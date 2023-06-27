@@ -1,5 +1,16 @@
 .wrapper {
-    .child {
-        margin-top: var(--height-header);
+    padding-top: var(--height-header);
+
+    .header {
+        width: 100%;
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1;
+    }
+
+    .content {
+        width: 90%;
     }
 }

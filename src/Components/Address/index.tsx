@@ -1,17 +1,16 @@
 'use client';
+
+import classnames from 'classnames/bind';
+import styles from './Addres.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import Loading from '../Loading';
 import { TypeAddress } from '@/Types';
-import Loading from '@/Components/Loading';
-// import { useState } from 'react';
-import classNames from 'classnames/bind';
-import styles from './HeaderLocation.module.scss';
 
-const cx = classNames.bind(styles);
+const cx = classnames.bind(styles);
 
-export default function HeaderLocation() {
-    function setMapAddress(address: TypeAddress, latlon: string) {
-        const mapWrapper = document.querySelector<HTMLElement>('#mapholder');
+const Address = () => {
+    function setMapAddress(address: TypeAddress, latlon: string, mapWrapper: HTMLElement) {
         if (mapWrapper) {
             mapWrapper.innerHTML = `
                 <p>
@@ -22,17 +21,19 @@ export default function HeaderLocation() {
                 </a>
             `;
             const variableSetTimeout = setTimeout(() => {
+                mapWrapper.setAttribute('datatype', 'open');
                 mapWrapper.style.display = 'none';
-            }, 5000);
+            }, 2500);
 
             return () => clearTimeout(variableSetTimeout);
         }
     }
 
-    function handleLocate() {
-        if (navigator.geolocation) {
-            const mapWrapper = document.querySelector<HTMLElement>('#mapholder');
-            if (mapWrapper) mapWrapper.style.display = 'flex';
+    function showAddress() {
+        const mapWrapper = document.querySelector<HTMLElement>('#mapholder');
+        if (navigator.geolocation && mapWrapper && mapWrapper.getAttribute('datatype') === 'open') {
+            mapWrapper.setAttribute('datatype', 'close');
+            mapWrapper.style.display = 'flex';
             navigator.geolocation.getCurrentPosition(
                 (position) => {
                     const { latitude, longitude } = position.coords;
@@ -40,7 +41,7 @@ export default function HeaderLocation() {
                     fetch(url)
                         .then((res) => res.json())
                         .then((data) => {
-                            setMapAddress(data.address, latitude + ',' + longitude);
+                            setMapAddress(data.address, latitude + ',' + longitude, mapWrapper);
                         })
                         .catch(() => console.log('ERROR fetching location data from API'));
                 },
@@ -51,17 +52,16 @@ export default function HeaderLocation() {
 
     return (
         <div className={cx('wrapper')}>
-            <button
-                className={cx('content')}
-                title="Vị trí"
-                onClick={() => handleLocate()}
-                type="button"
-            >
-                <FontAwesomeIcon icon={faLocationDot} className={cx('icon')} />
-            </button>
-            <div id="mapholder" className={cx('address-user')}>
-                <Loading />
+            <div className={cx('content')}>
+                <button className={cx('button')} title="Vị trí" type="button" onClick={showAddress}>
+                    <FontAwesomeIcon className={cx('button-icon')} icon={faLocationDot} />
+                </button>
+                <div id="mapholder" className={cx('address')} datatype="open">
+                    <Loading />
+                </div>
             </div>
         </div>
     );
-}
+};
+
+export default Address;

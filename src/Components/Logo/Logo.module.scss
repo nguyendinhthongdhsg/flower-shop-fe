@@ -1,0 +1,19 @@
+.wrapper {
+    height: 100%;
+
+    .content {
+        height: 100%;
+        display: flex;
+        align-items: center;
+
+        .heading {
+            margin-left: 4px;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
+    }
+}

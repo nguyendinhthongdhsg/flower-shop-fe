@@ -1,0 +1,83 @@
+.wrapper {
+    height: 100%;
+
+    .content {
+        height: 100%;
+        position: relative;
+
+        .button {
+            width: var(--height-header-item);
+            height: 100%;
+            border-radius: 50%;
+            background-color: var(--white-color);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--box-shadow-color);
+            transition: box-shadow 0.2s var(--itr-yy-z);
+            color: var(--black-color);
+
+            &:hover {
+                box-shadow: var(--hover-box-shadow-color);
+            }
+
+            .button-icon {
+                font-size: 1.4rem;
+            }
+        }
+
+        .address {
+            position: absolute;
+            top: calc(var(--height-header) - 6px);
+            left: -124.8px;
+            z-index: 1;
+            width: 300px;
+            min-height: 100px;
+            padding: 20px;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            background-color: var(--border-color);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--box-shadow-color);
+            transform-origin: center top;
+            animation: grow ease-in 0.2s;
+
+            & > p {
+                margin-bottom: 12px;
+            }
+
+            & > a {
+                color: var(--link-underline-color);
+                text-decoration: underline;
+            }
+
+            &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                top: -12px;
+                left: calc(50% - 20px);
+                background-color: transparent;
+                content: '';
+                border-width: 20px 20px;
+                border-style: solid;
+                border-color: var(--border-color) var(--border-color) transparent transparent;
+                border-top-right-radius: 6px;
+                transform: rotate(-45deg);
+                z-index: 1;
+            }
+        }
+    }
+}
+
+@keyframes grow {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

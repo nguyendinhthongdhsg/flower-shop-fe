@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --white-color: #fff;
+    --black-color: #000;
+    --border-color: #e2e2e2;
+    --grey-color: grey;
+    --hover-color: #f5f5f5;
+    --link-underline-color: #001d74;
+
+    /* variable dimension */
+    --height-header: 81px;
+    --height-header-item: 48px;
+
+    /* box-shadow */
+    --box-shadow-color: 0px 1px 2px rgba(0, 0, 0, 0.08), 2px 4px 12px rgba(0, 0, 0, 0.05);
+    --hover-box-shadow-color: 1px 2px 4px rgba(0, 0, 0, 0.18);
+
+    /* cubic */
+    --itr-yy-z: cubic-bezier(0.2, 0, 0, 1);
+}
+
+* {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+ul {
+
+    list-style: none;
+
+}
+
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+input {
+    border: none;
+    outline: none;
+}

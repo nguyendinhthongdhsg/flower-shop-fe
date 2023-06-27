@@ -1,1 +1,4 @@
-export { default as flowerLogo } from './flowerLogo.png';
+import logo from './logo.svg';
+import avatar from './placeholder.jpg';
+
+export { logo, avatar };
