@@ -1,0 +1,53 @@
+.wrapper {
+    display: block;
+    width: fit-content;
+
+    .content {
+        width: 100%;
+
+        .icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.4rem;
+            color: var(--item-nav-page-color);
+            transition: color ease 0.2s;
+        }
+
+        .heading {
+            margin: 6px 0;
+            padding: 0 4px;
+            color: var(--item-nav-page-color);
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color ease 0.2s;
+        }
+
+        .line {
+            height: 2.5px;
+            border-radius: 40px;
+            transition: background-color ease 0.2s;
+        }
+
+        &.active {
+            .icon,
+            .heading {
+                color: var(--black-color);
+            }
+
+            .line {
+                background-color: var(--black-color);
+            }
+        }
+
+        &:hover:not(.active) {
+            .icon,
+            .heading {
+                color: var(--black-color);
+            }
+            .line {
+                background-color: var(--border-color);
+            }
+        }
+    }
+}

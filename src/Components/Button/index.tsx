@@ -16,7 +16,13 @@ const Button: React.FC<ButtonProps> = ({ label, onClick, disabled, outline, smal
     return (
         <button
             onClick={onClick}
-            className={cx('wrapper', outline && 'outline', small && 'small', icon && 'isIcon')}
+            className={cx(
+                'wrapper',
+                disabled && 'disabled',
+                outline && 'outline',
+                small && 'small',
+                icon && 'isIcon'
+            )}
             disabled={disabled}
             type="button"
         >

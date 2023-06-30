@@ -1,6 +1,18 @@
 .wrapper {
     width: 100%;
     padding: 10px 14px;
+    font-size: 1rem;
+
+    &:hover {
+        background-color: var(--hover-color);
+    }
+}
+
+.link-to-page {
+    display: block;
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 1rem;
 
     &:hover {
         background-color: var(--hover-color);

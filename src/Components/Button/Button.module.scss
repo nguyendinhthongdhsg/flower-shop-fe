@@ -11,6 +11,11 @@
     align-items: center;
     justify-content: center;
 
+    &.disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+
     &.small {
         width: 40%;
         height: 50px;

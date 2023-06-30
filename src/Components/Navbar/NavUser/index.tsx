@@ -4,14 +4,23 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import styles from './NavUser.module.scss';
 import Avatar from '@/Components/Avatar';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import useRegisterModal from '@/hooks/useRegisterModal';
 import MenuItem from '../../MenuItem';
+import useLoginModal from '@/hooks/useLoginModal';
+import { TypeUser } from '@/Types';
+import { signOut } from 'next-auth/react';
+import { redirect } from 'next/navigation';
 
 const cx = classnames.bind(styles);
 
-const NavUser = () => {
+interface NavUserProps {
+    user: TypeUser | undefined;
+}
+
+const NavUser: React.FC<NavUserProps> = ({ user }) => {
     const registerModal = useRegisterModal();
+    const loginModal = useLoginModal();
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -19,18 +28,55 @@ const NavUser = () => {
         setIsOpen((value) => !value);
     }, []);
 
+    useEffect(() => {
+        if (isOpen) {
+            document.onclick = (e) => {
+                let event: HTMLElement | null;
+                event = e.target as HTMLElement;
+                while (event && !event.id) {
+                    event = event.parentElement;
+                }
+                if ((event && event.id !== 'nav-user-content-wrapper') || !event) {
+                    setIsOpen(false);
+                }
+            };
+        } else {
+            document.onclick = () => {};
+        }
+    }, [isOpen]);
+
     return (
         <div className={cx('wrapper')}>
-            <div className={cx('content')} onClick={toggleOpen}>
+            <div className={cx('content')} onClick={toggleOpen} id="nav-user-content-wrapper">
                 <div className={cx('button-list')}>
                     <FontAwesomeIcon icon={faBars} />
                 </div>
-                <Avatar />
+                <Avatar image={user?.image} />
                 {isOpen && (
                     <div className={cx('menu-list')}>
-                        <MenuItem label="Đăng nhập" onClick={() => {}} />
-                        <MenuItem label="Đăng ký" onClick={registerModal.onOpen} />
-                        <MenuItem label="Trợ giúp" onClick={() => {}} />
+                        {user ? (
+                            <>
+                                <MenuItem label="Trang chủ" onClick={() => {}} redirect="/" />
+                                <MenuItem label="Tài khoản" onClick={() => {}} />
+                                <MenuItem label="Danh sách yêu thích" onClick={() => {}} />
+                                <MenuItem
+                                    label="Bảng điều khiển"
+                                    onClick={() => {}}
+                                    redirect="/dashboard/home"
+                                />
+                                <div className={cx('item-line')}></div>
+                                <MenuItem label="Trợ giúp" onClick={() => {}} />
+                                <MenuItem label="Đăng xuất" onClick={() => signOut()} />
+                            </>
+                        ) : (
+                            <>
+                                <MenuItem label="Trang chủ" onClick={() => {}} redirect="/" />
+                                <MenuItem label="Đăng nhập" onClick={loginModal.onOpen} />
+                                <MenuItem label="Đăng ký" onClick={registerModal.onOpen} />
+                                <div className={cx('item-line')}></div>
+                                <MenuItem label="Trợ giúp" onClick={() => {}} />
+                            </>
+                        )}
                     </div>
                 )}
             </div>

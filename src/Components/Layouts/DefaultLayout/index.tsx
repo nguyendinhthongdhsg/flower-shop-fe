@@ -3,19 +3,23 @@ import Navbar from '@/Components/Navbar';
 import styles from './DefaultLayout.module.scss';
 import Register from '@/Components/Modals/Register';
 import ToasterProvider from '@/providers/ToasterProvider';
+import Login from '@/Components/Modals/Login';
+import { Session } from 'next-auth';
 interface DefaultLayoutProps {
     children: React.ReactNode;
+    session: Session | null;
 }
 
 const cx = classnames.bind(styles);
 
-const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
+const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children, session }) => {
     return (
         <div className={cx('wrapper')}>
+            <Login />
             <Register />
             <ToasterProvider />
             <header className={cx('header')}>
-                <Navbar />
+                <Navbar user={session?.user} />
             </header>
             <div className={cx('content')}>{children}</div>
         </div>

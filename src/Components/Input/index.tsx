@@ -23,10 +23,13 @@ const Input: React.FC<InputProps> = ({ id, label, type, disabled, register, requ
                 type={type}
                 disabled={disabled}
                 {...register(id, { required })}
-                className={cx('input', errors[id] && 'error')}
+                className={cx('input', errors[id] && 'error', disabled && 'disabled')}
                 placeholder={label}
             />
-            <label htmlFor={id} className={cx('label', errors[id] && 'error')}>
+            <label
+                htmlFor={id}
+                className={cx('label', errors[id] && 'error', disabled && 'disabled')}
+            >
                 {label}
             </label>
         </div>

@@ -48,6 +48,11 @@
                     &:hover {
                         background-color: #f1f1f1;
                     }
+
+                    &.disabled {
+                        cursor: not-allowed;
+                        opacity: 0.5;
+                    }
                 }
 
                 .heading {

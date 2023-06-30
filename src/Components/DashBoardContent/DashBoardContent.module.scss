@@ -1,0 +1,16 @@
+.wrapper {
+    .content {
+        .nav {
+            margin: 30px 0;
+
+            .list-link {
+                display: flex;
+                align-items: center;
+
+                .item-link {
+                    margin-right: 40px;
+                }
+            }
+        }
+    }
+}

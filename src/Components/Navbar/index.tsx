@@ -4,10 +4,15 @@ import styles from './Navbar.module.scss';
 import NavSerach from './NavSearch';
 import Address from '../Address';
 import NavUser from './NavUser';
+import { TypeUser } from '@/Types';
 
 const cx = classnames.bind(styles);
 
-const Navbar = () => {
+interface NavbarProps {
+    user: TypeUser | undefined;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ user }) => {
     return (
         <nav className={cx('wrapper')}>
             <div className={cx('content')}>
@@ -25,7 +30,7 @@ const Navbar = () => {
                             <Address />
                         </div>
                         <div className={cx('itemChildren')}>
-                            <NavUser />
+                            <NavUser user={user} />
                         </div>
                     </li>
                 </ul>

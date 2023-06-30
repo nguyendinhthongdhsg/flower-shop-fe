@@ -39,6 +39,18 @@ const Modal: React.FC<ModalProps> = ({
         setShowModal(isOpen);
     }, [isOpen]);
 
+    useEffect(() => {
+        if (showModal) {
+            document.onkeydown = (e) => {
+                if (e.key === 'Enter' && !disabled) {
+                    onSubmit();
+                }
+            };
+        } else {
+            document.onkeydown = () => {};
+        }
+    }, [showModal, disabled, onSubmit]);
+
     const handleClose = useCallback(() => {
         if (disabled) {
             return;
@@ -61,21 +73,37 @@ const Modal: React.FC<ModalProps> = ({
         secondaryAction();
     }, [disabled, secondaryAction]);
 
+    const handlerCloseByClickOut = (e: EventTarget) => {
+        const event = e as HTMLElement;
+        if (event.id === 'modal-content-wrapper') {
+            handleClose();
+        } else {
+            return;
+        }
+    };
+
     if (!isOpen) {
         return;
     }
 
     return (
         <div className={cx('wrapper')}>
-            <div className={cx('content')}>
+            <div
+                className={cx('content')}
+                onClick={(e) => {
+                    handlerCloseByClickOut(e.target);
+                }}
+                id="modal-content-wrapper"
+            >
                 <div className={cx('modal')}>
                     {/* Header */}
                     <header className={cx('header')}>
                         <button
                             type="button"
-                            className={cx('button-close')}
+                            className={cx('button-close', disabled && 'disabled')}
                             onClick={handleClose}
                             title="Đóng"
+                            disabled={disabled}
                         >
                             <FontAwesomeIcon icon={faXmark} className={cx('button-close-icon')} />
                         </button>
