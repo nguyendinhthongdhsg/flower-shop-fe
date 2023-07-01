@@ -1,7 +1,45 @@
 .wrapper {
     .content {
         .delete {
-            height: 1000px;
+            padding: 60px 0;
+            min-height: 400px;
+
+            .list-directory {
+                margin-top: 30px;
+                .item-directory {
+                    display: flex;
+                    align-items: center;
+                    padding: 12px;
+                    border-radius: 8px;
+                    border: 1px solid var(--border-color);
+                    margin: 8px 0;
+
+                    & > div {
+                        &:not(.delete-btn) {
+                            flex: 1;
+                        }
+
+                        & > p {
+                            width: 100%;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+
+                        &.delete-btn {
+                            padding-right: 4px;
+                            button {
+                                background-color: unset;
+                                font-size: 1.4rem;
+                                color: red;
+                                width: fit-content;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

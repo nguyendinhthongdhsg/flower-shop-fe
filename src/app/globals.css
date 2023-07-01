@@ -30,7 +30,12 @@
 html {
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
+    overflow-y: scroll;
 
+}
+
+html::-webkit-scrollbar-track {
+    height: 100vh;
 }
 
 body {

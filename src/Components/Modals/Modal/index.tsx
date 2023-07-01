@@ -39,18 +39,6 @@ const Modal: React.FC<ModalProps> = ({
         setShowModal(isOpen);
     }, [isOpen]);
 
-    useEffect(() => {
-        if (showModal) {
-            document.onkeydown = (e) => {
-                if (e.key === 'Enter' && !disabled) {
-                    onSubmit();
-                }
-            };
-        } else {
-            document.onkeydown = () => {};
-        }
-    }, [showModal, disabled, onSubmit]);
-
     const handleClose = useCallback(() => {
         if (disabled) {
             return;
@@ -81,6 +69,19 @@ const Modal: React.FC<ModalProps> = ({
             return;
         }
     };
+
+    useEffect(() => {
+        if (showModal) {
+            document.onkeydown = (e) => {
+                if (e.key === 'Enter') {
+                    console.log('Key Is Enter');
+                    handleSubmit();
+                }
+            };
+        } else {
+            document.onkeydown = () => {};
+        }
+    }, [showModal, handleSubmit]);
 
     if (!isOpen) {
         return;

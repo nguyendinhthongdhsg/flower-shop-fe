@@ -65,9 +65,15 @@ const Register = () => {
                 });
         } else {
             setError('email', {});
-            setValue('email', '');
+            setValue('email', 'Vui lòng nhập email hợp lệ!');
             setFocus('email');
         }
+    };
+
+    const change = (e: EventTarget, id: string) => {
+        const input = e as HTMLInputElement;
+        const password = input.value;
+        setValue(id, password);
     };
 
     const bodyContent = (
@@ -81,6 +87,8 @@ const Register = () => {
                 register={register}
                 errors={errors}
                 required
+                autoforcus={true}
+                change={change}
             />
             <Input
                 id="name"
@@ -89,6 +97,7 @@ const Register = () => {
                 register={register}
                 errors={errors}
                 required
+                change={change}
             />
             <Input
                 id="password"
@@ -98,6 +107,7 @@ const Register = () => {
                 register={register}
                 errors={errors}
                 required
+                change={change}
             />
         </div>
     );

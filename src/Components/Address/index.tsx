@@ -17,11 +17,11 @@ const Address = () => {
                     ${address.suburb}, ${address.city_district}, ${address.city}, ${address.country}.
                 </p>
                 <a href="https://www.google.com/maps/@${latlon}z?entry=ttu" target='_blank'>
-                    Địa chỉ của bạn trên Google Map
+                    Địa chỉ của bạn trên Google Maps
                 </a>
             `;
             const variableSetTimeout = setTimeout(() => {
-                mapWrapper.setAttribute('datatype', 'open');
+                mapWrapper.setAttribute('data-type', 'open');
                 mapWrapper.style.display = 'none';
             }, 2500);
 
@@ -31,8 +31,12 @@ const Address = () => {
 
     function showAddress() {
         const mapWrapper = document.querySelector<HTMLElement>('#mapholder');
-        if (navigator.geolocation && mapWrapper && mapWrapper.getAttribute('datatype') === 'open') {
-            mapWrapper.setAttribute('datatype', 'close');
+        if (
+            navigator.geolocation &&
+            mapWrapper &&
+            mapWrapper.getAttribute('data-type') === 'open'
+        ) {
+            mapWrapper.setAttribute('data-type', 'close');
             mapWrapper.style.display = 'flex';
             navigator.geolocation.getCurrentPosition(
                 (position) => {
@@ -56,7 +60,7 @@ const Address = () => {
                 <button className={cx('button')} title="Vị trí" type="button" onClick={showAddress}>
                     <FontAwesomeIcon className={cx('button-icon')} icon={faLocationDot} />
                 </button>
-                <div id="mapholder" className={cx('address')} datatype="open">
+                <div id="mapholder" className={cx('address')} data-type="open">
                     <Loading />
                 </div>
             </div>

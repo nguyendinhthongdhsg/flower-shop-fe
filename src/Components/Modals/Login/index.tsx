@@ -25,6 +25,7 @@ const Login = () => {
         register,
         handleSubmit,
         reset,
+        setValue,
         formState: { errors },
     } = useForm<FieldValues>({
         defaultValues: {
@@ -54,6 +55,12 @@ const Login = () => {
         });
     };
 
+    const change = (e: EventTarget, id: string) => {
+        const input = e as HTMLInputElement;
+        const password = input.value;
+        setValue(id, password);
+    };
+
     const bodyContent = (
         <div>
             <Heading title="Chào mừng đến Flower Shop" />
@@ -65,6 +72,8 @@ const Login = () => {
                 register={register}
                 errors={errors}
                 required
+                autoforcus={true}
+                change={change}
             />
             <Input
                 id="password"
@@ -74,6 +83,7 @@ const Login = () => {
                 register={register}
                 errors={errors}
                 required
+                change={change}
             />
         </div>
     );

@@ -13,18 +13,38 @@ interface InputProps {
     required?: boolean;
     register: UseFormRegister<FieldValues>;
     errors: FieldErrors;
+    change?: (e: EventTarget, elementChange: string) => void;
+    autoforcus?: boolean;
+    autocomplate?: string;
 }
 
-const Input: React.FC<InputProps> = ({ id, label, type, disabled, register, required, errors }) => {
+const Input: React.FC<InputProps> = ({
+    id,
+    label,
+    type,
+    disabled,
+    register,
+    required,
+    errors,
+    change,
+    autoforcus,
+    autocomplate,
+}) => {
     return (
         <div className={cx('wrapper')}>
             <input
                 id={id}
                 type={type}
                 disabled={disabled}
-                {...register(id, { required })}
+                {...register(id, { required: required })}
                 className={cx('input', errors[id] && 'error', disabled && 'disabled')}
                 placeholder={label}
+                onChange={(e) => {
+                    change ? change(e.target, id) : {};
+                }}
+                spellCheck={false}
+                autoFocus={autoforcus}
+                autoComplete={autocomplate ? autocomplate : 'off'}
             />
             <label
                 htmlFor={id}

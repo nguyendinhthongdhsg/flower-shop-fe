@@ -62,7 +62,7 @@ const NavUser: React.FC<NavUserProps> = ({ user }) => {
                                 <MenuItem
                                     label="Bảng điều khiển"
                                     onClick={() => {}}
-                                    redirect="/dashboard/home"
+                                    redirect="/dashboard/directory"
                                 />
                                 <div className={cx('item-line')}></div>
                                 <MenuItem label="Trợ giúp" onClick={() => {}} />

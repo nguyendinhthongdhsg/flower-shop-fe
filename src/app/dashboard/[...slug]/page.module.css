@@ -1,0 +1,17 @@
+.wrapper {
+    color: var(--black-color);
+
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 60px 0;
+}
+
+.icon {
+    margin-right: 8px;
+    font-size: 1.2rem;
+    color: rgb(214, 214, 36)
+}
