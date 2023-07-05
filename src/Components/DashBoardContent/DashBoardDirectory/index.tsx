@@ -83,6 +83,8 @@ const DashBoardDirectory: React.FC<DashBoardDirectoryProps> = ({ pathName }) => 
     const onSubmit: SubmitHandler<FieldValues> = useCallback(
         (data) => {
             setIsLoading(true);
+            data.name = data.name.trim();
+            data.id = data.id.trim();
             axios
                 .post(URL_BACKEND + '/directory', { directory: data })
                 .then((res) => res.data)
@@ -125,7 +127,12 @@ const DashBoardDirectory: React.FC<DashBoardDirectoryProps> = ({ pathName }) => 
                 }
             };
         } else {
-            document.onkeydown = () => {};
+            document.removeEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    console.log('Key Is Enter');
+                    handleSubmit(onSubmit)();
+                }
+            });
         }
     }, [isMoutedDash, handleSubmit, onSubmit]);
 

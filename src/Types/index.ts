@@ -19,3 +19,10 @@ export interface TypeDirectory {
     _id?: string | null | undefined;
     id?: string | null | undefined;
 }
+
+export interface TypeFlower {
+    name?: string | null | undefined;
+    price?: number | null | undefined;
+    id?: string | null | undefined;
+    _id?: string | null | undefined;
+}

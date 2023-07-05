@@ -1,4 +1,4 @@
 import logo from './logo.svg';
 import avatar from './placeholder.jpg';
-
-export { logo, avatar };
+import imageAdd from './imageAdd.jpg';
+export { logo, avatar, imageAdd };

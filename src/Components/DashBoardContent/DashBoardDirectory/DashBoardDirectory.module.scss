@@ -16,21 +16,25 @@
 
                     & > div {
                         &:not(.delete-btn) {
-                            flex: 1;
+                            width: 50%;
+                            overflow: hidden;
                         }
 
                         & > p {
-                            width: 100%;
                             overflow: hidden;
                             text-overflow: ellipsis;
+                            white-space: nowrap;
                         }
 
                         &.delete-btn {
                             padding-right: 4px;
                             button {
                                 background-color: unset;
-                                font-size: 1.4rem;
-                                color: red;
+                                font-size: 1.2rem;
+                                background-color: red;
+                                color: var(--white-color);
+                                border-radius: 4px;
+                                padding: 4px;
                                 width: fit-content;
                                 display: flex;
                                 justify-content: center;

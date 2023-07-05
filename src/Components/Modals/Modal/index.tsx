@@ -79,7 +79,12 @@ const Modal: React.FC<ModalProps> = ({
                 }
             };
         } else {
-            document.onkeydown = () => {};
+            document.removeEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    console.log('Key Is Enter');
+                    handleSubmit();
+                }
+            });
         }
     }, [showModal, handleSubmit]);
 

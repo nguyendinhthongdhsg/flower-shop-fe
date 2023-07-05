@@ -1,53 +1,249 @@
 .wrapper {
-    .form {
-        display: flex;
+    .content {
+        .form {
+            display: flex;
 
-        .form-product {
-            flex: 1;
-            padding-right: 30px;
+            .form-product {
+                flex: 1;
+                padding-right: 30px;
 
-            .form-content {
-                .input-image {
-                    display: none;
-                }
+                .form-content {
+                    width: 100%;
+                    position: relative;
 
-                .label-input-image {
-                    display: block;
-                    height: 50px;
-                    width: 30%;
-                    margin: 30px 0;
-                    border-radius: 8px;
-                    border: 1px solid var(--border-color);
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    box-shadow: var(--box-shadow-color);
-                    background-color: #ccc;
-                    transition: box-shadow 0.2s var(--itr-yy-z);
-                    cursor: pointer;
+                    .input-item {
+                        width: 100%;
+                        position: relative;
+                        margin: 28px 0;
 
-                    &:hover {
-                        box-shadow: var(--hover-box-shadow-color);
+                        .input {
+                            width: 100%;
+                            height: 50px;
+                            padding: 0 12px;
+                            border-radius: 8px;
+                            border: 1px solid var(--border-color);
+                            font-size: 1rem;
+
+                            &.disabled {
+                                cursor: not-allowed;
+                                opacity: 0.5;
+                            }
+
+                            &.error {
+                                border-color: red;
+                                color: red;
+
+                                &::placeholder {
+                                    color: red;
+                                }
+                            }
+
+                            &:focus {
+                                border: 2px solid var(--black-color);
+                                color: var(--black-color);
+
+                                &::placeholder {
+                                    color: transparent;
+                                }
+                            }
+
+                            &:focus + .label {
+                                top: 0px;
+                                background-color: var(--white-color);
+                                color: var(--black-color);
+                            }
+
+                            &::placeholder {
+                                font-size: 1.1rem;
+                                font-family: inherit;
+                            }
+                        }
+
+                        .label {
+                            position: absolute;
+                            top: 50%;
+                            left: 14px;
+                            z-index: 1;
+                            transform: translateY(-60%);
+                            color: transparent;
+                            font-size: 1.1rem;
+                            transition: top ease 0.2s;
+                            cursor: text;
+
+                            &.disabled {
+                                cursor: not-allowed;
+                                opacity: 0.5;
+                            }
+                        }
                     }
 
-                    &.disabled {
-                        cursor: not-allowed;
-                        opacity: 0.5;
-                        &:hover {
+                    .add-image-product {
+                        width: 100%;
+                        margin: 30px 0;
+                        display: flex;
+                        align-items: center;
+                        position: relative;
+                        background-color: var(--white-color);
+
+                        .input-image.input {
+                            position: absolute;
+                            top: 25%;
+                            left: 5px;
+                            z-index: -1;
+                        }
+
+                        .label-input-image {
+                            display: block;
+                            height: 50px;
+                            width: 30%;
+                            border-radius: 8px;
+                            border: 1px solid var(--border-color);
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
                             box-shadow: var(--box-shadow-color);
+                            background-color: #ccc;
+                            transition: box-shadow 0.2s var(--itr-yy-z);
+                            cursor: pointer;
+
+                            &:hover {
+                                box-shadow: var(--hover-box-shadow-color);
+                            }
+
+                            &.disabled {
+                                cursor: not-allowed;
+                                opacity: 0.5;
+                                &:hover {
+                                    box-shadow: var(--box-shadow-color);
+                                }
+                            }
+
+                            &.error {
+                                border-color: red;
+                                color: red;
+                            }
+                        }
+
+                        & > p {
+                            flex: 1;
+                            text-align: center;
+                        }
+                    }
+
+                    .btn-submit-form {
+                        width: 100%;
+                        height: 50px;
+                        border-radius: 8px;
+                        background-color: var(--black-color);
+                        color: var(--white-color);
+                        font-size: 1rem;
+                        font-weight: 600;
+                        position: relative;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        &.disabled {
+                            cursor: not-allowed;
+                            opacity: 0.5;
+                        }
+                    }
+                }
+            }
+            .demo-product {
+                flex: 1;
+                padding-left: 30px;
+
+                .demo-product-content {
+                    margin-top: 30px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+
+                    .demo-product-card {
+                        padding: 12px;
+                        border-radius: 18px;
+                        box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.1);
+
+                        .demo-product-image {
+                            width: 100%;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+
+                            .demo-product-image-img {
+                                border-radius: 12px;
+                                width: 300px;
+                                padding: 50% 0;
+                                background-position: center;
+                                background-repeat: no-repeat;
+                                background-size: cover;
+                                background-clip: border-box;
+                            }
+                        }
+
+                        .demo-product-information {
+                            width: 100%;
+                            padding: 24px 4px 12px;
+
+                            h4 {
+                                font-weight: 300;
+                            }
+
+                            .demo-product-info {
+                                width: 100%;
+                                margin-bottom: 12px;
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                            }
                         }
                     }
                 }
             }
         }
-        .demo-products {
-            flex: 1;
-            padding-left: 30px;
+        .list-flower {
+            padding: 60px 0;
+            min-height: 400px;
 
-            .demo-products-content {
-                .demo-products-information {
-                    .demo-products-name {
-                        color: #000;
+            .list {
+                margin-top: 30px;
+                .item {
+                    display: flex;
+                    align-items: center;
+                    padding: 12px;
+                    border-radius: 8px;
+                    border: 1px solid var(--border-color);
+                    margin: 8px 0;
+
+                    & > div {
+                        &:not(.delete-btn) {
+                            width: 50%;
+                            overflow: hidden;
+                        }
+
+                        & > p {
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                        }
+
+                        &.delete-btn {
+                            padding-right: 4px;
+                            button {
+                                background-color: unset;
+                                font-size: 1.2rem;
+                                background-color: red;
+                                color: var(--white-color);
+                                border-radius: 4px;
+                                padding: 4px;
+                                width: fit-content;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                            }
+                        }
                     }
                 }
             }

@@ -10,7 +10,6 @@ import MenuItem from '../../MenuItem';
 import useLoginModal from '@/hooks/useLoginModal';
 import { TypeUser } from '@/Types';
 import { signOut } from 'next-auth/react';
-import { redirect } from 'next/navigation';
 
 const cx = classnames.bind(styles);
 
@@ -41,7 +40,16 @@ const NavUser: React.FC<NavUserProps> = ({ user }) => {
                 }
             };
         } else {
-            document.onclick = () => {};
+            document.removeEventListener('onclick', (e) => {
+                let event: HTMLElement | null;
+                event = e.target as HTMLElement;
+                while (event && !event.id) {
+                    event = event.parentElement;
+                }
+                if ((event && event.id !== 'nav-user-content-wrapper') || !event) {
+                    setIsOpen(false);
+                }
+            });
         }
     }, [isOpen]);
 
