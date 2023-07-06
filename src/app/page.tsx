@@ -2,7 +2,6 @@ import { DefaultLayout } from '@/Components/Layouts';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { loginWithSocal } from '@/api/login';
-import NavPage from '@/Components/NavPage';
 import Content from '@/Components/Content';
 import styles from './page.module.css';
 
@@ -16,7 +15,6 @@ const Page = async () => {
         <div className={styles.wrapper}>
             <DefaultLayout session={session}>
                 <div>
-                    <NavPage />
                     <Content />
                 </div>
             </DefaultLayout>

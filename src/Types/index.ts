@@ -24,5 +24,6 @@ export interface TypeFlower {
     name?: string | null | undefined;
     price?: number | null | undefined;
     id?: string | null | undefined;
+    directory?: string | null | undefined;
     _id?: string | null | undefined;
 }

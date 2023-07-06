@@ -66,7 +66,7 @@ const NavUser: React.FC<NavUserProps> = ({ user }) => {
                             <>
                                 <MenuItem label="Trang chủ" onClick={() => {}} redirect="/" />
                                 <MenuItem label="Tài khoản" onClick={() => {}} />
-                                <MenuItem label="Danh sách yêu thích" onClick={() => {}} />
+                                <MenuItem label="Danh sách giỏ hàng" onClick={() => {}} />
                                 <MenuItem
                                     label="Bảng điều khiển"
                                     onClick={() => {}}
