@@ -209,6 +209,9 @@
 
             .list {
                 margin-top: 30px;
+                display: flex;
+                flex-direction: column-reverse;
+
                 .item {
                     display: flex;
                     align-items: center;
@@ -219,8 +222,9 @@
 
                     & > div {
                         &:not(.delete-btn) {
-                            width: 50%;
+                            width: 33%;
                             overflow: hidden;
+                            padding-right: 20px;
                         }
 
                         & > p {

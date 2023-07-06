@@ -78,6 +78,7 @@ const DashBoardDirectory: React.FC<DashBoardDirectoryProps> = ({ pathName }) => 
             name: '',
             id: '',
         },
+        mode: 'onBlur',
     });
 
     const onSubmit: SubmitHandler<FieldValues> = useCallback(

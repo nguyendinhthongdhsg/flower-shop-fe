@@ -25,42 +25,6 @@ const DashBoardFlower: React.FC<DashBoardFlowerProps> = ({ pathName }) => {
     const [listFlower, setListFlower] = useState([]);
     let isMoutedDash = true;
 
-    const onSubmit = (event: FormEvent<HTMLFormElement>) => {
-        let checkForm = true;
-        event.preventDefault();
-        const form = event.target as HTMLFormElement;
-        const listInput = document.querySelectorAll(`.${cx('input')}`);
-        const length = listInput.length;
-        console.log(listInput);
-        for (let i = 0; i < length; i++) {
-            const input = listInput[i] as HTMLInputElement;
-            if (!input.value.trim()) {
-                checkForm = false;
-                validatorInput(input, 'Vui lòng nhập thông tin');
-            }
-        }
-        if (checkForm) {
-            setIsLoading(true);
-
-            axios
-                .post(URL_BACKEND + '/flower', form, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data',
-                    },
-                })
-                .then((res) => res.data)
-                .then((res) => {
-                    if (res?.success) {
-                        toast.success('Thêm sản phẩm thành công');
-                    } else if (res?.error) {
-                        toast.error(res?.error);
-                    }
-                })
-                .catch(() => toast.error('Thêm sản phẩm không thành công'))
-                .finally(() => setIsLoading(false));
-        }
-    };
-
     const change = (event: EventTarget, elementChange: string) => {
         const input = event as HTMLInputElement;
         const value = input.value;
@@ -71,6 +35,47 @@ const DashBoardFlower: React.FC<DashBoardFlowerProps> = ({ pathName }) => {
             } else {
                 elementName.textContent = value.trim();
             }
+        }
+    };
+
+    const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+        let checkForm = true;
+        event.preventDefault();
+        const form = event.target as HTMLFormElement;
+        const listInput = document.querySelectorAll(`.${cx('input')}`);
+        const length = listInput.length;
+        for (let i = 0; i < length; i++) {
+            const input = listInput[i] as HTMLInputElement;
+            if (!input.value.trim()) {
+                checkForm = false;
+                validatorInput(input, 'Vui lòng nhập thông tin');
+            }
+        }
+        if (checkForm) {
+            setIsLoading(true);
+            axios
+                .post(URL_BACKEND + '/flower', form, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                })
+                .then((res) => res.data)
+                .then((res) => {
+                    if (res?.success && res.formDB) {
+                        const listFake = [...listFlower];
+                        listFake.push(res.formDB as never);
+                        setListFlower(listFake);
+                        toast.success('Thêm sản phẩm thành công');
+                        for (let i = 0; i < length; i++) {
+                            const input = listInput[i] as HTMLInputElement;
+                            input.value = '';
+                        }
+                    } else if (res?.error) {
+                        toast.error(res?.error);
+                    }
+                })
+                .catch(() => toast.error('Thêm sản phẩm không thành công'))
+                .finally(() => setIsLoading(false));
         }
     };
 
@@ -103,6 +108,8 @@ const DashBoardFlower: React.FC<DashBoardFlowerProps> = ({ pathName }) => {
                 }
             };
             reader.readAsDataURL(inputImage.files[0]);
+        } else if (inputImage && inputImage.files && !inputImage.files[0]) {
+            setImageAddSrc(imageAdd.src);
         }
     };
 
@@ -149,12 +156,20 @@ const DashBoardFlower: React.FC<DashBoardFlowerProps> = ({ pathName }) => {
             document.onkeydown = (e) => {
                 if (e.key === 'Enter') {
                     console.log('Key Is Enter');
+                    const btnSubmit = document.querySelector(
+                        `.${cx('btn-submit-form')}`
+                    ) as HTMLButtonElement;
+                    btnSubmit.click();
                 }
             };
         } else {
             document.removeEventListener('keydown', (e) => {
                 if (e.key === 'Enter') {
                     console.log('Key Is Enter');
+                    const btnSubmit = document.querySelector(
+                        `.${cx('btn-submit-form')}`
+                    ) as HTMLButtonElement;
+                    btnSubmit.click();
                 }
             });
         }
@@ -193,6 +208,7 @@ const DashBoardFlower: React.FC<DashBoardFlowerProps> = ({ pathName }) => {
                                             'Vui lòng nhập thông tin'
                                         )
                                     }
+                                    autoFocus={true}
                                 />
                                 <label
                                     htmlFor="input-name"
