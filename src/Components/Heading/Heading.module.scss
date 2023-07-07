@@ -7,8 +7,17 @@
         flex-direction: column;
 
         .heading {
+            display: flex;
+            align-items: center;
             font-size: 1.3rem;
             font-weight: 600;
+
+            .heading-icon {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-right: 12px;
+            }
 
             &.center {
                 text-align: center;
