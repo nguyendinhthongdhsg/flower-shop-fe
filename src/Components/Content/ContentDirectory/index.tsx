@@ -15,11 +15,16 @@ interface ContenDirectoryProps {
 const ContentDirectory: React.FC<ContenDirectoryProps> = async ({ directory }) => {
     const listFlower = await getFlower(directory.id);
     return (
-        <div className={cx('wrapper')}>
+        <div className={cx('wrapper')} id={directory.id ? directory.id : ''}>
             <div className={cx('content')}>
                 {listFlower && (
                     <>
-                        <Heading title={directory.name ? directory.name : ''} icon={<FaListUl />} />
+                        <div className={cx('heading')}>
+                            <Heading
+                                title={directory.name ? directory.name : ''}
+                                icon={<FaListUl />}
+                            />
+                        </div>
                         <ul className={cx('list')}>
                             {listFlower[0] &&
                                 listFlower.map((item: TypeFlower, index: number) => {

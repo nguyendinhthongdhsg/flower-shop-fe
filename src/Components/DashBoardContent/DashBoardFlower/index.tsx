@@ -94,6 +94,7 @@ const DashBoardFlower: React.FC<DashBoardFlowerProps> = ({ pathName }) => {
                 item.placeholder = option;
             } else {
                 item.classList.remove(cx('error'));
+                item.placeholder = item.name;
             }
         }
     };

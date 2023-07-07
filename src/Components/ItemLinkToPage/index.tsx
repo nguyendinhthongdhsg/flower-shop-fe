@@ -14,7 +14,7 @@ const cx = classNames.bind(styles);
 
 const ItemLinkToPage: React.FC<ItemLinkToPageProps> = ({ label, href, active, Icon }) => {
     return (
-        <Link href={href} className={cx('wrapper')}>
+        <Link href={href} className={cx('wrapper')} passHref>
             <div className={cx('content', active === href && 'active')}>
                 <div className={cx('icon')}>{Icon && <Icon />}</div>
                 <h4 className={cx('heading')}>{label}</h4>

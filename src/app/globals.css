@@ -31,7 +31,9 @@ html {
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
     overflow-y: scroll;
-
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+    scroll-padding-top: calc(var(--height-header) + 30px);
 }
 
 html::-webkit-scrollbar-track {

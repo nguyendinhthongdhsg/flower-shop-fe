@@ -12,6 +12,14 @@
             padding: 12px;
             border-radius: 18px;
             box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: transform linear 0.2s, box-shadow 0.2s var(--itr-yy-z);
+            will-change: transform;
+
+            &:hover {
+                transform: translateY(-10px);
+                box-shadow: var(--hover-box-shadow-color);
+            }
 
             .image-wrapper {
                 width: 100%;
@@ -50,6 +58,22 @@
                     align-items: center;
                     & > div {
                         overflow: hidden;
+                    }
+                }
+
+                .footer {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .icon-shopping {
+                        padding-right: 14px;
+                        color: var(--black-color);
+
+                        .icon-shopping-svg {
+                            cursor: pointer;
+                        }
                     }
                 }
             }

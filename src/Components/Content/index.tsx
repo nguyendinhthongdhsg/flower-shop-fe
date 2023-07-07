@@ -3,6 +3,7 @@ import classNames from 'classnames/bind';
 import styles from './Content.module.scss';
 import { TypeDirectory } from '@/Types';
 import ContentDirectory from './ContentDirectory';
+import ContentHeader from './ContentHeader';
 
 const cx = classNames.bind(styles);
 
@@ -11,6 +12,7 @@ const Content = async () => {
     return (
         <main className={cx('wrapper')}>
             <div className={cx('content')}>
+                <ContentHeader directory={listDir} />
                 {listDir && (
                     <ul className={cx('list')}>
                         {listDir.map((item: TypeDirectory, index: number) => {

@@ -1,5 +1,12 @@
 .wrapper {
     .content {
+        padding-bottom: 40px;
+
+        .heading {
+            width: 100%;
+            padding-left: 14px;
+        }
+
         .list {
             display: flex;
             align-items: center;

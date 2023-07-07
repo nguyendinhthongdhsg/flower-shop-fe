@@ -3,6 +3,7 @@ import classNames from 'classnames/bind';
 import styles from './Card.module.scss';
 import { URL_BACKEND } from '@/config';
 import format from '@/hooks/useFormat';
+import { BsCartPlus } from 'react-icons/bs';
 
 const cx = classNames.bind(styles);
 
@@ -32,8 +33,17 @@ const Card: React.FC<CardProps> = async ({ flower }) => {
                                 <h4>{flower.id}</h4>
                             </div>
                         </div>
-                        <div className={cx('price')}>
-                            <h4>{format(Number(flower.price), 'VNĐ')}</h4>
+                        <div className={cx('footer')}>
+                            <div className={cx('price')}>
+                                <h4>{format(Number(flower.price), 'VNĐ')}</h4>
+                            </div>
+                            <div className={cx('icon-shopping')}>
+                                <BsCartPlus
+                                    className={cx('icon-shopping-svg')}
+                                    data-id={flower.id}
+                                    size={25}
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
