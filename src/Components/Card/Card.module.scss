@@ -11,6 +11,7 @@
             width: 100%;
             padding: 12px;
             border-radius: 18px;
+            border: 1px solid var(--border-color);
             box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.1);
             position: relative;
             transition: transform linear 0.2s, box-shadow 0.2s var(--itr-yy-z);
@@ -66,15 +67,6 @@
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-
-                    .icon-shopping {
-                        padding-right: 14px;
-                        color: var(--black-color);
-
-                        .icon-shopping-svg {
-                            cursor: pointer;
-                        }
-                    }
                 }
             }
         }

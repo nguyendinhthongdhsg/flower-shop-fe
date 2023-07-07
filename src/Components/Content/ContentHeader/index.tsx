@@ -1,7 +1,6 @@
 import { TypeDirectory } from '@/Types';
 import classNames from 'classnames/bind';
 import styles from './ContentHeader.module.scss';
-import Link from 'next/link';
 
 const cx = classNames.bind(styles);
 

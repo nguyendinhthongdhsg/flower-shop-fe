@@ -78,7 +78,6 @@ const NavUser: React.FC<NavUserProps> = ({ user }) => {
                             </>
                         ) : (
                             <>
-                                <MenuItem label="Trang chủ" onClick={() => {}} redirect="/" />
                                 <MenuItem label="Đăng nhập" onClick={loginModal.onOpen} />
                                 <MenuItem label="Đăng ký" onClick={registerModal.onOpen} />
                                 <div className={cx('item-line')}></div>

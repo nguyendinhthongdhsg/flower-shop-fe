@@ -4,6 +4,7 @@ import styles from './Card.module.scss';
 import { URL_BACKEND } from '@/config';
 import format from '@/hooks/useFormat';
 import { BsCartPlus } from 'react-icons/bs';
+import ButtonAddProduct from './ButtonAddProduct';
 
 const cx = classNames.bind(styles);
 
@@ -37,13 +38,7 @@ const Card: React.FC<CardProps> = async ({ flower }) => {
                             <div className={cx('price')}>
                                 <h4>{format(Number(flower.price), 'VNĐ')}</h4>
                             </div>
-                            <div className={cx('icon-shopping')}>
-                                <BsCartPlus
-                                    className={cx('icon-shopping-svg')}
-                                    data-id={flower.id}
-                                    size={25}
-                                />
-                            </div>
+                            <ButtonAddProduct flowerId={flower.id} />
                         </div>
                     </div>
                 </div>

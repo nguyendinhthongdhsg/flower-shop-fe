@@ -1,0 +1,24 @@
+.wrapper {
+    width: 40%;
+    .content {
+        width: 100%;
+        color: var(--black-color);
+        padding: 8px;
+        border-radius: 12px;
+        background-color: var(--hover-color);
+        cursor: pointer;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        transition: box-shadow 0.2s var(--itr-yy-z);
+
+        & > p {
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        &:hover {
+            box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+        }
+    }
+}

@@ -16,7 +16,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ label, onClick, redirect }) => {
     return (
         <>
             {redirect ? (
-                <Link className={cx('link-to-page')} href={redirect}>
+                <Link className={cx('link-to-page')} href={redirect} passHref>
                     {label}
                 </Link>
             ) : (
