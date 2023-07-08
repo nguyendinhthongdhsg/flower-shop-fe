@@ -1,0 +1,51 @@
+.body {
+    padding-bottom: 25px;
+    font-size: 1rem;
+
+    .content {
+        .list {
+            .item {
+                width: 100%;
+                padding: 10px 0;
+
+                .label {
+                    display: block;
+                    margin-bottom: 10px;
+                }
+
+                & > div {
+                    width: 100%;
+
+                    &.input {
+                        display: flex;
+                        align-items: center;
+
+                        .input-address {
+                            flex: 1;
+                            font-size: 0.95rem;
+                            border: 1px solid var(--border-color);
+                            border-radius: 8px;
+                            padding: 10px 6px;
+                            margin-right: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.footer {
+    display: flex;
+    align-items: flex-start;
+
+    .footer-icon {
+        font-size: 1.6rem;
+        color: rgb(218, 218, 25);
+        margin-right: 1px;
+    }
+
+    .footer-message {
+        text-align: center;
+    }
+}

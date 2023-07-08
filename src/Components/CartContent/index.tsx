@@ -12,6 +12,8 @@ import { RiDeleteBin5Line } from 'react-icons/ri';
 import Button from '../Button';
 import { AiFillWarning, AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 import { toast } from 'react-hot-toast';
+import useOrderModal from '@/hooks/useOrder';
+import Order from '../Modals/Order';
 
 const cx = classNames.bind(styles);
 
@@ -24,6 +26,7 @@ const CartContent: React.FC<CartContentProps> = ({ user }) => {
     const [isLoading, setIsLoading] = useState(true);
     const [sumPrice, setSumPrice] = useState(0);
     const [sumLength, setSumLength] = useState(0);
+    const order = useOrderModal();
     useEffect(() => {
         if (user && user.email) {
             axios
@@ -87,35 +90,34 @@ const CartContent: React.FC<CartContentProps> = ({ user }) => {
         const option = element.getAttribute('data-option');
 
         if (id && index && option) {
+            const listFake = [...listCart] as TypeCart[];
+            if (listFake[Number(index)]) {
+                const numberFake = listFake[Number(index)].length;
+                if (numberFake) {
+                    if (option === 'increase') listFake[Number(index)].length = numberFake + 1;
+                    else if (option === 'decrease') {
+                        if (numberFake - 1 === 0) {
+                            const btnDelete = document.querySelector(
+                                `button[data-id-product='${id}'][title='Xóa']`
+                            ) as HTMLButtonElement;
+                            btnDelete.click();
+                        } else {
+                            listFake[Number(index)].length = numberFake - 1;
+                        }
+                    }
+                    setListCart(listFake as never[]);
+                }
+            }
             axios
                 .put(URL_BACKEND + '/cart', { id, option, userId: user?.email })
                 .then((res) => res.data)
                 .then((res) => {
                     if (res.success) {
-                        const listFake = [...listCart] as TypeCart[];
-                        if (listFake[Number(index)]) {
-                            const numberFake = listFake[Number(index)].length;
-                            if (numberFake) {
-                                if (option === 'increase')
-                                    listFake[Number(index)].length = numberFake + 1;
-                                else if (option === 'decrease') {
-                                    if (numberFake - 1 === 0) {
-                                        const btnDelete = document.querySelector(
-                                            `button[data-id-product='${id}'][title='Xóa']`
-                                        ) as HTMLButtonElement;
-                                        btnDelete.click();
-                                    } else {
-                                        listFake[Number(index)].length = numberFake - 1;
-                                    }
-                                }
-                                setListCart(listFake as never[]);
-                            }
-                        }
                     } else if (res.error) {
-                        toast.error('Đã có lỗi xảy ra1.');
+                        toast.error('Đã có lỗi xảy ra.');
                     }
                 })
-                .catch(() => toast.error('Đã có lỗi xảy ra.2'));
+                .catch(() => toast.error('Đã có lỗi xảy ra.'));
         }
     };
 
@@ -133,7 +135,6 @@ const CartContent: React.FC<CartContentProps> = ({ user }) => {
                             <Heading title="Giỏ hàng của bạn" />
                         </header>
                         <ul className={cx('list')}>
-                            <Button onClick={() => {}} label="Đặt hàng" />
                             <li className={cx('item')}>
                                 <span className={cx('sum-cart')}>
                                     <div className={cx('sumLength')}>
@@ -221,6 +222,13 @@ const CartContent: React.FC<CartContentProps> = ({ user }) => {
                                     );
                                 })}
                         </ul>
+                        <Button onClick={order.onOpen} label="Đặt hàng" />
+                        <Order
+                            listCart={listCart as TypeCart[]}
+                            sumLength={sumLength}
+                            sumPrice={sumPrice}
+                            user={user}
+                        />
                     </>
                 ) : (
                     user &&

@@ -122,7 +122,12 @@ const Modal: React.FC<ModalProps> = ({
                             {/* Footer */}
 
                             <div className={cx('footer')}>
-                                <div className={cx('content')}>
+                                <div
+                                    className={cx(
+                                        'content',
+                                        secondaryAction && secondaryActionLabel && 'two-btn'
+                                    )}
+                                >
                                     {secondaryAction && secondaryActionLabel && (
                                         <Button
                                             outline

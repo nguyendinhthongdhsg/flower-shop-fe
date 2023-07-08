@@ -2,6 +2,8 @@ import './globals.css';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import NextTopLoader from 'nextjs-toploader';
+import ToasterProvider from '@/providers/ToasterProvider';
+
 config.autoAddCss = false;
 
 interface RootLayoutProps {
@@ -19,6 +21,7 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
         <>
             <html lang="en">
                 <body>
+                    <ToasterProvider />
                     <NextTopLoader
                         color="#000"
                         initialPosition={0.08}

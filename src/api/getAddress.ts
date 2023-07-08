@@ -1,8 +1,5 @@
-import axios from 'axios';
+export default function useAddress() {
+    const address = { addressString: '', addressMapGoogle: '' };
 
-const getAddress = async () => {
-    if (navigator.geolocation) {
-    }
-};
-
-export default getAddress;
+    return address;
+}
