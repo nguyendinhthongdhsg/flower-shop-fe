@@ -61,7 +61,7 @@ const CartContent: React.FC<CartContentProps> = ({ user }) => {
         const index = element.getAttribute('data-index-product');
         if (id && index) {
             axios
-                .delete(URL_BACKEND + '/cart', { data: { id } })
+                .delete(URL_BACKEND + '/cart', { data: { id, userId: user?.email } })
                 .then((res) => res.data)
                 .then((res) => {
                     if (res.success) {
@@ -88,7 +88,7 @@ const CartContent: React.FC<CartContentProps> = ({ user }) => {
 
         if (id && index && option) {
             axios
-                .put(URL_BACKEND + '/cart', { id, option })
+                .put(URL_BACKEND + '/cart', { id, option, userId: user?.email })
                 .then((res) => res.data)
                 .then((res) => {
                     if (res.success) {
