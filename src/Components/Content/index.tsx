@@ -1,13 +1,17 @@
 import { getDirectory } from '@/api/getDirectory';
 import classNames from 'classnames/bind';
 import styles from './Content.module.scss';
-import { TypeDirectory } from '@/Types';
+import { TypeDirectory, TypeUser } from '@/Types';
 import ContentDirectory from './ContentDirectory';
 import ContentHeader from './ContentHeader';
 
 const cx = classNames.bind(styles);
 
-const Content = async () => {
+interface ContentProps {
+    user: TypeUser | undefined;
+}
+
+const Content: React.FC<ContentProps> = async ({ user }) => {
     const listDir = await getDirectory();
     return (
         <main className={cx('wrapper')}>
@@ -18,7 +22,7 @@ const Content = async () => {
                         {listDir.map((item: TypeDirectory, index: number) => {
                             return (
                                 <li key={index} className={cx('item')}>
-                                    <ContentDirectory directory={item} />
+                                    <ContentDirectory directory={item} user={user} />
                                 </li>
                             );
                         })}

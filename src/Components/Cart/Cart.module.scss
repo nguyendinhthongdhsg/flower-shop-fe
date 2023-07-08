@@ -1,0 +1,22 @@
+.wrapper {
+    height: 100%;
+
+    .content {
+        width: var(--height-header-item);
+        height: 100%;
+        border-radius: 50%;
+        background-color: var(--white-color);
+        border: 1px solid var(--border-color);
+        box-shadow: var(--box-shadow-color);
+        transition: box-shadow 0.2s var(--itr-yy-z);
+        color: var(--black-color);
+        font-size: 1.2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+            box-shadow: var(--hover-box-shadow-color);
+        }
+    }
+}

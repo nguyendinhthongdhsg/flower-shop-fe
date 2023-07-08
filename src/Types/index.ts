@@ -27,3 +27,11 @@ export interface TypeFlower {
     directory?: string | null | undefined;
     _id?: string | null | undefined;
 }
+
+export interface TypeCart {
+    name?: string | null | undefined;
+    price?: number | null | undefined;
+    id?: string | null | undefined;
+    length?: number | null | undefined;
+    userId: string | null | undefined;
+}

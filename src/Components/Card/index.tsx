@@ -1,4 +1,4 @@
-import { TypeFlower } from '@/Types';
+import { TypeFlower, TypeUser } from '@/Types';
 import classNames from 'classnames/bind';
 import styles from './Card.module.scss';
 import { URL_BACKEND } from '@/config';
@@ -10,9 +10,10 @@ const cx = classNames.bind(styles);
 
 interface CardProps {
     flower: TypeFlower;
+    user: TypeUser | undefined;
 }
 
-const Card: React.FC<CardProps> = async ({ flower }) => {
+const Card: React.FC<CardProps> = async ({ flower, user }) => {
     return (
         <div className={cx('wrapper')}>
             <div className={cx('content')}>
@@ -38,7 +39,7 @@ const Card: React.FC<CardProps> = async ({ flower }) => {
                             <div className={cx('price')}>
                                 <h4>{format(Number(flower.price), 'VNĐ')}</h4>
                             </div>
-                            <ButtonAddProduct flowerId={flower.id} />
+                            <ButtonAddProduct flower={flower} user={user} />
                         </div>
                     </div>
                 </div>

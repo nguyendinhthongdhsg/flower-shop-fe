@@ -7,7 +7,6 @@ import DashBoardContent from '@/Components/DashBoardContent';
 import { AiFillWarning } from 'react-icons/ai';
 
 import styles from './page.module.css';
-import Heading from '@/Components/Heading';
 
 const Page = async () => {
     let isAdmin = await false;

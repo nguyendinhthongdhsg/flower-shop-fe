@@ -1,0 +1,120 @@
+.wrapper {
+    .content {
+        padding-left: 8px;
+
+        .header {
+            padding: calc(var(--height-header) - 20px) 0 20px;
+
+            .message-warning-login {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .message-warning-login-icon {
+                    font-size: 1.2rem;
+                    color: rgb(218, 218, 25);
+                    margin-right: 4px;
+                }
+            }
+        }
+
+        .list {
+            width: 100%;
+
+            display: flex;
+            flex-direction: column-reverse;
+
+            .item {
+                width: 100%;
+                margin: 20px 0;
+
+                .item-product {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    padding: 8px;
+                    border: 1px solid var(--border-color);
+                    border-radius: 8px;
+
+                    .image {
+                        width: 50px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin: 0 auto 0 0;
+
+                        .image-content {
+                            border-radius: 8px;
+                            width: 100%;
+                            height: 0;
+                            padding: 50% 0;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            background-size: cover;
+                            background-clip: border-box;
+                        }
+                    }
+
+                    & > div {
+                        width: 16.6%;
+                        display: flex;
+                        align-items: center;
+
+                        &.length {
+                            button {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                padding: 6px;
+                                border-radius: 4px;
+
+                                &:first-child {
+                                    margin-right: 25px;
+                                }
+
+                                &:last-child {
+                                    margin-left: 25px;
+                                }
+                            }
+                        }
+
+                        h4 {
+                            font-weight: 400;
+                        }
+                    }
+
+                    & > .delete-product {
+                        padding-right: 4px;
+                        button {
+                            background-color: unset;
+                            font-size: 1.2rem;
+                            background-color: red;
+                            color: var(--white-color);
+                            border-radius: 4px;
+                            padding: 4px;
+                            width: fit-content;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }
+                    }
+                }
+
+                .sum-cart {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    padding: 20px 8px;
+                    border: 1px solid var(--border-color);
+                    border-radius: 8px;
+                    margin-bottom: 20px;
+
+                    & > div {
+                        text-align: center;
+                        width: 50%;
+                    }
+                }
+            }
+        }
+    }
+}

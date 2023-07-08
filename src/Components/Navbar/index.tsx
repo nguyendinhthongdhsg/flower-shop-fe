@@ -5,6 +5,7 @@ import NavSerach from './NavSearch';
 import Address from '../Address';
 import NavUser from './NavUser';
 import { TypeUser } from '@/Types';
+import Cart from '../Cart';
 
 const cx = classnames.bind(styles);
 
@@ -28,6 +29,9 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                     <li className={cx('item')}>
                         <div className={cx('itemChildren')}>
                             <Address />
+                        </div>
+                        <div className={cx('itemChildren')}>
+                            <Cart />
                         </div>
                         <div className={cx('itemChildren')}>
                             <NavUser user={user} />

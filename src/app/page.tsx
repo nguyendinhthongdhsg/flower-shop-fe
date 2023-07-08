@@ -15,7 +15,7 @@ const Page = async () => {
         <div className={styles.wrapper}>
             <DefaultLayout session={session}>
                 <div>
-                    <Content />
+                    <Content user={session?.user} />
                 </div>
             </DefaultLayout>
         </div>

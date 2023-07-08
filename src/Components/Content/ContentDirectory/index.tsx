@@ -1,7 +1,7 @@
 import getFlower from '@/api/getFlower';
 import classNames from 'classnames/bind';
 import styles from './ContenDirectory.module.scss';
-import { TypeDirectory, TypeFlower } from '@/Types';
+import { TypeDirectory, TypeFlower, TypeUser } from '@/Types';
 import Heading from '@/Components/Heading';
 import Card from '@/Components/Card';
 import { FaListUl } from 'react-icons/fa';
@@ -10,9 +10,10 @@ const cx = classNames.bind(styles);
 
 interface ContenDirectoryProps {
     directory: TypeDirectory;
+    user: TypeUser | undefined;
 }
 
-const ContentDirectory: React.FC<ContenDirectoryProps> = async ({ directory }) => {
+const ContentDirectory: React.FC<ContenDirectoryProps> = async ({ directory, user }) => {
     const listFlower = await getFlower(directory.id);
     return (
         <div className={cx('wrapper')} id={directory.id ? directory.id : ''}>
@@ -30,7 +31,7 @@ const ContentDirectory: React.FC<ContenDirectoryProps> = async ({ directory }) =
                                 listFlower.map((item: TypeFlower, index: number) => {
                                     return (
                                         <li key={index} className={cx('item')}>
-                                            <Card flower={item} />
+                                            <Card flower={item} user={user} />
                                         </li>
                                     );
                                 })}
