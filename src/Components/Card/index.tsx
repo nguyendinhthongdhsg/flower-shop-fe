@@ -3,7 +3,6 @@ import classNames from 'classnames/bind';
 import styles from './Card.module.scss';
 import { URL_BACKEND } from '@/config';
 import format from '@/hooks/useFormat';
-import { BsCartPlus } from 'react-icons/bs';
 import ButtonAddProduct from './ButtonAddProduct';
 
 const cx = classNames.bind(styles);
@@ -13,7 +12,7 @@ interface CardProps {
     user: TypeUser | undefined;
 }
 
-const Card: React.FC<CardProps> = async ({ flower, user }) => {
+const Card: React.FC<CardProps> = ({ flower, user }) => {
     return (
         <div className={cx('wrapper')}>
             <div className={cx('content')}>
